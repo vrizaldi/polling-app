@@ -18,6 +18,7 @@
     "babel-preset-es2015": "*",
     "babel-preset-react": "*",
     "babel-preset-stage-0": "*",
+    "body-parser": "^1.17.2",
     "express": "*",
     "history": "*",
     "jquery": "*",
@@ -29,7 +30,7 @@
     "react-router-dom": "^4.1.1",
     "redux": "*",
     "redux-logger": "*",
-    "redux-promise-middleware": "*",
+    "redux-promise-middleware": "^4.3.0",
     "redux-thunk": "*",
     "webpack": "*"
   },
