@@ -2,9 +2,10 @@ var debug = process.env.NODE_ENV != "production";
 var webpack = require("webpack");
 
 module.exports = {
-	context: __dirname + "/src",
+	context: __dirname + "/dist",
 	devtool: debug ? "inline-sourcemap" : null,
 	entry: "./js/client.js",
+	/*
 	module: {
 		loaders: [
 			{
@@ -20,8 +21,9 @@ module.exports = {
 			}
 		]
 	},
+	*/
 	output: {
-		path: __dirname + "/src/public",
+		path: __dirname + "/dist/public",
 		filename: "client.min.js"
 	}
-}
+};

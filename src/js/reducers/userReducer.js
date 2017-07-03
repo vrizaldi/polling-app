@@ -4,7 +4,9 @@ const initialStates = {
 	error: false,
 	userData: {
 		username: "",
-		bio: ""
+		bio: "",
+		adminPolls: [],
+		participatePolls: []
 	}
 };
 export default function reducer(state=initialStates, action) {
@@ -15,7 +17,7 @@ export default function reducer(state=initialStates, action) {
 			...state,
 			fetching: "none",
 			error: false
-		}
+		};
 
 	// login cases ------------------
 	case "LOG_IN_PENDING":
@@ -79,6 +81,27 @@ export default function reducer(state=initialStates, action) {
 			...state,
 			error: true
 		};
+
+	// voting cases ----------------
+	case "VOTE_PENDING":
+		return {
+			...state,
+			fetching: "fetching"
+		};
+
+	case "VOTE_FULFILLED":
+		var participatePolls = state.participatePolls.splice(0);
+		participatePolls.push({
+			pollID: action.payload.data.pollID,
+			selectedOpt: action.payload.data.selectedOpt
+		});
+
+		return {
+			...state,
+			participatePolls,
+			fetching: "success"
+		};
 	}
+
 	return state;
 }

@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"poll",
+				"pollData"
+			],
+			[
+				"serve",
+				"serveIndex"
+			],
+			[
+				"json",
+				"jsonencoded"
+			],
+			[
 				"logg",
 				"loggedIn"
 			],
@@ -20,45 +32,19 @@
 	"buffers":
 	[
 		{
-			"file": "src/js/client.js",
-			"settings":
-			{
-				"buffer_size": 361,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/reducers/index.js",
-			"settings":
-			{
-				"buffer_size": 120,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/components/Main.js",
-			"settings":
-			{
-				"buffer_size": 420,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/components/Header.js",
-			"settings":
-			{
-				"buffer_size": 144,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "src/js/reducers/userReducer.js",
 			"settings":
 			{
-				"buffer_size": 326,
+				"buffer_size": 1788,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/reducers/pollReducer.js",
+			"settings":
+			{
+				"buffer_size": 526,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -67,7 +53,61 @@
 			"file": "src/js/pages/Login.js",
 			"settings":
 			{
-				"buffer_size": 620,
+				"buffer_size": 1234,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/server.js",
+			"settings":
+			{
+				"buffer_size": 2417,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/components/Main.js",
+			"settings":
+			{
+				"buffer_size": 605,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/pages/Poll.js",
+			"settings":
+			{
+				"buffer_size": 628,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/reducers/index.js",
+			"settings":
+			{
+				"buffer_size": 161,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/components/Form.js",
+			"settings":
+			{
+				"buffer_size": 384,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/components/Notif.js",
+			"settings":
+			{
+				"buffer_size": 171,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -76,16 +116,7 @@
 			"file": "src/js/pages/Profile.js",
 			"settings":
 			{
-				"buffer_size": 488,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/actions/UserActions.js",
-			"settings":
-			{
-				"buffer_size": 119,
+				"buffer_size": 609,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -99,12 +130,12 @@
 	"command_palette":
 	{
 		"height": 389.0,
-		"last_filter": "packa",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
 				"packa",
-				"Package Control: Remove Package"
+				"Package Control: Install Package"
 			],
 			[
 				"Package Control: ins",
@@ -145,14 +176,25 @@
 		"/home/vrizaldi/workspace/polling-app2/src/js",
 		"/home/vrizaldi/workspace/polling-app2/src/js/actions",
 		"/home/vrizaldi/workspace/polling-app2/src/js/components",
-		"/home/vrizaldi/workspace/polling-app2/src/js/pages",
 		"/home/vrizaldi/workspace/polling-app2/src/js/reducers",
 		"/home/vrizaldi/workspace/polling-app2/src/views"
 	],
 	"file_history":
 	[
-		"/home/vrizaldi/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/home/vrizaldi/workspace/polling-app2/src/js/actions/UserActions.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/pages/Register.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/actions/pollActions.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/reducers/pollReducer.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/components/Main.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/client.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/reducers/index.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/components/Header.js",
+		"/home/vrizaldi/workspace/polling-app2/src/server.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/store.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/pages/Login.js",
 		"/home/vrizaldi/workspace/polling-app2/src/js/pages/Profile.js",
+		"/home/vrizaldi/workspace/polling-app2/.eslintrc.js",
+		"/home/vrizaldi/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
 		"/home/vrizaldi/workspace/polling-app2/src/views/index.html",
 		"/home/vrizaldi/workspace/polling-app/src/js/pages/Profile.js",
 		"/home/vrizaldi/workspace/polling-app/src/js/pages/Login.js",
@@ -193,6 +235,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"poll",
+			"//\t\t",
 			"Login",
 			"parser"
 		],
@@ -212,24 +256,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/js/client.js",
+					"file": "src/js/reducers/userReducer.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 361,
+						"buffer_size": 1788,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1687,
+								1687
 							]
 						],
 						"settings":
@@ -237,7 +281,7 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1452.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
@@ -245,76 +289,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "src/js/reducers/index.js",
+					"file": "src/js/reducers/pollReducer.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 120,
+						"buffer_size": 526,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								115,
-								115
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/js/components/Main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 420,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								153,
-								153
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/js/components/Header.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 144,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								26,
-								26
+								224,
+								224
 							]
 						],
 						"settings":
@@ -329,20 +316,136 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/js/reducers/userReducer.js",
+					"buffer": 2,
+					"file": "src/js/pages/Login.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 326,
+						"buffer_size": 1234,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								304,
-								304
+								969,
+								969
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 462.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/server.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2417,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2240,
+								2240
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 198.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/js/components/Main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 605,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								569,
+								569
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 66.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/js/pages/Poll.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 628,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								608,
+								608
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 303.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/js/reducers/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 161,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								156,
+								156
 							]
 						],
 						"settings":
@@ -353,24 +456,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/js/pages/Login.js",
+					"buffer": 7,
+					"file": "src/js/components/Form.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 620,
+						"buffer_size": 384,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								114,
-								114
+								354,
+								354
 							]
 						],
 						"settings":
@@ -382,63 +485,64 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
+					"file": "src/js/components/Notif.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 171,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								142,
+								142
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
 					"file": "src/js/pages/Profile.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 488,
+						"buffer_size": 609,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								58,
-								58
+								311,
+								311
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/js/actions/UserActions.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 119,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								109,
-								109
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -529,7 +633,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 191.0,
+	"side_bar_width": 211.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

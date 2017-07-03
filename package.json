@@ -4,8 +4,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/server.js",
-    "uglifycss": "uglifycss --ugly-comments ./src/css/index.css > ./src/public/index.min.css"
+    "start": "node ./dist/server.js",
+    "start_old": "node ./dist/oldServer.js",
+    "build": "babel ./src/js -d ./dist/js; babel ./src/server -d ./dist/server; babel ./src/server.js -o ./dist/server.js",
+    "uglifycss": "uglifycss --ugly-comments ./src/css/index.css > ./dist/public/index.min.css"
   },
   "dependencies": {
     "axios": "*",
@@ -37,6 +39,7 @@
   "author": "vrizaldi",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "eslint": "^4.1.1",
     "eslint-plugin-react": "^7.1.0"
   },

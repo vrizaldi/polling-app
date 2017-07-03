@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 
 import { login, reset } from "../actions/UserActions";
-
+import Form from "../components/Form";
+import Notif from "../components/Notif";
 
 @connect((store) => {
 	return {
@@ -30,11 +31,9 @@ import { login, reset } from "../actions/UserActions";
 		// otherwise show login screen
 		return(
 			<div>
-				<div id="notification"><p>{notification}</p></div>
+				<Notif text={notification} />
 
-				<input id="username" type="text"/>
-				<input id="password" type="password"/>
-				<button onClick={this.login.bind(this)}>Login</button>
+				<Form action={this.login.bind(this)} label="Login"/>
 				<p>Or click <Link to="/register">here</Link> to register</p>
 			</div>
 		);

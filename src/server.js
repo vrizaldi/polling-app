@@ -1,97 +1,75 @@
-const express = require("express");
-const mongo = require("mongodb").MongoClient;
-const bodyParser = require("body-parser");
+import express from "express";
+import bodyParser from "body-parser";
+import reactDOMServer from "react-dom/server";
+import React from "react";
+
+import handleLogin from "./server/handleLogin";
+import handleSignup from "./server/handleSignup";
+import Client from "./server/Client";
 
 var server = express();
 
 server.use(express.static(__dirname + "/public"));
 var jsonencoded = bodyParser.json();
 
-server.get("/", 
-	function(req, res) {
-		console.log("Called");
-		res.sendFile(__dirname + "/views/index.html",
-			function(err) {
-				if(err) throw err;
+server.get("*", serveIndex);
 
-				console.log("File sent\n");
-			});
+function serveIndex(req, res) {
+	console.log("Called");
+
+	const context = {};
+	var url = req.url == "/" ? "/login" : req.url;
+		// redirect to login by default
+	const html = reactDOMServer.renderToString(
+		<Client
+			location={url}
+			context={context}/>);
+
+	console.log("sending file...");
+	res.writeHead(200, {
+		"content-type": "text/html"
 	});
+	res.write(`
+		<!doctype html>
+		<html>
+		<head>
+			<meta charset="utf-8">
 
-server.post("/login", jsonencoded,
-	function(req, res) {
-		console.log("Logging in...");
-		console.log("Username:", req.body.username);
-		console.log("password:", req.body.password);
+			<title></title>
+			<meta name="author" content="vrizaldi">
 
-		mongo.connect(
-			"mongodb://admin:a$ianDad@ds139942.mlab.com:39942/polling-app",
-			function(err, db) {
-				db.collection("users").find({
-					username: req.body.username
-				}).toArray(function(err, docs) {
-					console.log(docs);
-					if(docs.length > 0 
-							&& req.body.password == docs[0].password) {
-						// username found and password match
-						console.log("success");
-						res.json({
-							username: req.body.username,
-							bio: "It's the " + req.body.username
-						});
-					} else {
-						// username and password didn't match
-						console.log("failed");
-						res.json({
-							success : false
-						});
-					}
-				}); // to array
-			});	// mongo connect	
-	});	// server post
+			<link href="/index.min.css" rel="stylesheet">
+		<!--	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+			rel="stylesheet" >-->
+		</head>
 
-server.post("/register", jsonencoded,
-	function(req, res) {
-		console.log("Signing up...");
-		console.log("Username:", req.body.username);
-		console.log("password:", req.body.password);
+		<body>
+			<h1>Test</h1>
+			<div id="app">${html}</div>
+			<script src="/client.min.js"></script>
+			<p id="credit">Verdy Noorghifari 2017 © All right reversed.</p>
+		</body>
+		</html>
+	`);
+	res.end();
+	console.log("file sent:", html);
+	
+	/*
+	res.sendFile(__dirname + "/views/index.html", function (err) {
+		if (err) throw err;
 
-		mongo.connect(
-			"mongodb://admin:a$ianDad@ds139942.mlab.com:39942/polling-app",
-			function(err, db) {
-				db.collection("users").find({
-					username: req.body.username
-				}).toArray(function(err, docs) {
-					console.log(docs);
-					if(docs.length == 0) {
-						// username isn't used
-						console.log("success");
+		console.log("File sent\n");
+	});
+	*/
+}
 
-						// save to database
-						db.collection("users").save({
-							username: req.body.username,
-							password: req.body.password
-						});
+server.post("/login", jsonencoded, handleLogin); // server post
 
-						res.json({
-							success: true
-						});
-					} else {
-						console.log("failed");
-						res.json({
-							success : false
-						});
-					}
-				}); // to array
-			});	// mongo connect	
-		
-		
-	})
+server.post("/register", jsonencoded, handleSignup); // server post
 
 var port = process.env.PORT ? process.env.PORT : 21701;
-server.listen(port, 
-	function(err) {
-		if(err) throw err;
+server.listen(port, function (err) {
+	if (err) throw err;
 
-		console.log("Server is listening on port " + port);
-	});
+	console.log("Server is listening on port " + port);
+});

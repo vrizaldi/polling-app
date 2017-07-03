@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { register, reset } from "../actions/UserActions";
+import Form from "../components/Form";
+import Notif from "../components/Notif";
 
 @connect((store) => {
 	// allow dispatch
@@ -22,21 +25,19 @@ import { register, reset } from "../actions/UserActions";
 
 	render() {
 		var notification = "";
-		console.log(this.props.fetching);
-		if(this.props.fetching == "failed") 
+		if(this.props.fetching == "fetching")
+			return (<p>Registering user...</p>);
+		else if(this.props.fetching == "failed") 
 			notification = "Register failed, username is used";
 		else if(this.props.fetching == "success") 
 			notification = "Register success";
 
 		return(
 			<div>
-				<div id="notification"><p>{notification}</p></div>
+				<Notif text={notification}/>
 
-				<label for="username">Username: </label>
-				<input id="username" type="input"/>
-				<label for="password">Password: </label>
-				<input id="password" type="password"/>
-				<button onClick={this.register.bind(this)}>Register</button>
+				<Form action={this.register.bind(this)} label="Register"/>
+				<p>Or click <Link to="/login">here</Link> to login</p>
 			</div>
 		);
 	}
