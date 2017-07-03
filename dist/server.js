@@ -24,6 +24,14 @@ var _handleSignup = require("./server/handleSignup");
 
 var _handleSignup2 = _interopRequireDefault(_handleSignup);
 
+var _loadPoll = require("./server/loadPoll");
+
+var _loadPoll2 = _interopRequireDefault(_loadPoll);
+
+var _handleVote = require("./server/handleVote");
+
+var _handleVote2 = _interopRequireDefault(_handleVote);
+
 var _Client = require("./server/Client");
 
 var _Client2 = _interopRequireDefault(_Client);
@@ -35,6 +43,7 @@ var server = (0, _express2.default)();
 server.use(_express2.default.static(__dirname + "/public"));
 var jsonencoded = _bodyParser2.default.json();
 
+server.get("/getpoll", _loadPoll2.default);
 server.get("*", serveIndex);
 
 function serveIndex(req, res) {
@@ -63,9 +72,9 @@ function serveIndex(req, res) {
  */
 }
 
-server.post("/login", jsonencoded, _handleLogin2.default); // server post
-
-server.post("/register", jsonencoded, _handleSignup2.default); // server post
+server.post("/login", jsonencoded, _handleLogin2.default);
+server.post("/register", jsonencoded, _handleSignup2.default);
+server.post("/vote", jsonencoded, _handleVote2.default);
 
 var port = process.env.PORT ? process.env.PORT : 21701;
 server.listen(port, function (err) {

@@ -82,24 +82,27 @@ function reducer() {
 			return _extends({}, state, {
 				error: true
 			});
-
-		// voting cases ----------------
-		case "VOTE_PENDING":
-			return _extends({}, state, {
-				fetching: "fetching"
-			});
-
-		case "VOTE_FULFILLED":
-			var participatePolls = state.participatePolls.splice(0);
-			participatePolls.push({
-				pollID: action.payload.data.pollID,
-				selectedOpt: action.payload.data.selectedOpt
-			});
-
-			return _extends({}, state, {
-				participatePolls: participatePolls,
-				fetching: "success"
-			});
+		/*
+  	// voting cases ----------------
+  	case "VOTE_PENDING":
+  		return {
+  			...state,
+  			fetching: "fetching"
+  		};
+  
+  	case "VOTE_FULFILLED":
+  		var participatePolls = state.participatePolls.splice(0);
+  		participatePolls.push({
+  			pollID: action.payload.data.pollID,
+  			selectedOpt: action.payload.data.selectedOpt
+  		});
+  
+  		return {
+  			...state,
+  			participatePolls,
+  			fetching: "success"
+  		};
+  		*/
 	}
 
 	return state;

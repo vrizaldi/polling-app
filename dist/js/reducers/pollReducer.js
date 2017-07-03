@@ -11,8 +11,9 @@ exports.default = reducer;
 var initialStates = {
 	loaded: false,
 	fetching: "none",
-	error: false,
 	pollData: {
+		_id: "",
+		question: "",
 		opt: []
 	}
 };
@@ -31,7 +32,9 @@ function reducer() {
 		case "LOAD_FULFILLED":
 			return _extends({}, state, {
 				pollData: {
-					opt: action.payload.data.opt
+					_id: action.payload.data._id,
+					opt: action.payload.data.opt,
+					question: action.payload.data.question
 				},
 				fetching: "success"
 			});
@@ -42,8 +45,20 @@ function reducer() {
 				error: true
 			});
 
-		case "VOTE":
-			return state;
+		case "VOTE_PENDING":
+			return _extends({}, state, {
+				fetching: "fetching"
+			});
+
+		case "VOTE_FULFILLED":
+			return _extends({}, state, {
+				fetching: "success",
+				pollData: {
+					_id: action.payload.data._id,
+					opt: action.payload.data.opt,
+					question: action.payload.data.question
+				}
+			});
 	}
 	return state;
 }

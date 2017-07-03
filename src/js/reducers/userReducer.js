@@ -33,7 +33,9 @@ export default function reducer(state=initialStates, action) {
 				...state,
 				userData: {
 					username: action.payload.data.username,
-					bio: action.payload.data.bio
+					bio: action.payload.data.bio,
+					adminPolls: [],
+					participatePolls: []
 				},
 				loggedIn: true,
 				fetching: "none"
@@ -81,7 +83,7 @@ export default function reducer(state=initialStates, action) {
 			...state,
 			error: true
 		};
-
+/*
 	// voting cases ----------------
 	case "VOTE_PENDING":
 		return {
@@ -101,6 +103,7 @@ export default function reducer(state=initialStates, action) {
 			participatePolls,
 			fetching: "success"
 		};
+*/
 	}
 
 	return state;

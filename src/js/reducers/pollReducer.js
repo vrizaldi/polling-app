@@ -2,8 +2,9 @@
 const initialStates = {
 	loaded: false,
 	fetching: "none",
-	error: false,
 	pollData: {
+		_id: "",
+		question: "",
 		opt: []
 	}
 };
@@ -21,7 +22,9 @@ export default function reducer(state=initialStates, action) {
 		return {
 			...state,
 			pollData: {
-				opt: action.payload.data.opt
+				_id: action.payload.data._id,
+				opt: action.payload.data.opt,
+				question: action.payload.data.question
 			},
 			fetching: "success"
 		};
@@ -33,8 +36,22 @@ export default function reducer(state=initialStates, action) {
 			error: true
 		};
 
-	case "VOTE":
-		return state;
+	case "VOTE_PENDING":
+		return {
+			...state,
+			fetching: "fetching"
+		};
+
+	case "VOTE_FULFILLED":
+		return {
+			...state,
+			fetching: "success",
+			pollData: {
+				_id: action.payload.data._id,
+				opt: action.payload.data.opt,
+				question: action.payload.data.question
+			}
+		};
 	}
 	return state;
 }

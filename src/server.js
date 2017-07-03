@@ -5,6 +5,8 @@ import React from "react";
 
 import handleLogin from "./server/handleLogin";
 import handleSignup from "./server/handleSignup";
+import loadPoll from "./server/loadPoll";
+import handleVote from "./server/handleVote";
 import Client from "./server/Client";
 
 var server = express();
@@ -12,6 +14,7 @@ var server = express();
 server.use(express.static(__dirname + "/public"));
 var jsonencoded = bodyParser.json();
 
+server.get("/getpoll", loadPoll);
 server.get("*", serveIndex);
 
 function serveIndex(req, res) {
@@ -63,9 +66,9 @@ function serveIndex(req, res) {
 	*/
 }
 
-server.post("/login", jsonencoded, handleLogin); // server post
-
-server.post("/register", jsonencoded, handleSignup); // server post
+server.post("/login", jsonencoded, handleLogin); 
+server.post("/register", jsonencoded, handleSignup); 
+server.post("/vote", jsonencoded, handleVote);
 
 var port = process.env.PORT ? process.env.PORT : 21701;
 server.listen(port, function (err) {

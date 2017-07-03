@@ -7,6 +7,7 @@
     "start": "node ./dist/server.js",
     "start_old": "node ./dist/oldServer.js",
     "build": "babel ./src/js -d ./dist/js; babel ./src/server -d ./dist/server; babel ./src/server.js -o ./dist/server.js",
+    "update": "npm run build; webpack",
     "uglifycss": "uglifycss --ugly-comments ./src/css/index.css > ./dist/public/index.min.css"
   },
   "dependencies": {
@@ -25,6 +26,7 @@
     "history": "*",
     "jquery": "*",
     "mongodb": "*",
+    "query-string": "^4.3.4",
     "react": "*",
     "react-dom": "*",
     "react-redux": "*",
