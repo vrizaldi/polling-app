@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 
-import { createPoll, reset } from "../actions/UserActions";
+import { createPoll, reset, deletePoll } from "../actions/UserActions";
 import Button from "../components/Button";
 
 @connect((store) => {
@@ -28,6 +28,14 @@ import Button from "../components/Button";
 			this.props.password, 
 			question));
 	}
+
+	delete(pollID) {
+		console.log(`Deleting ${pollID}...`);
+		this.props.dispatch(deletePoll(
+			this.props.username, 
+			this.props.password, 
+			pollID));
+	}
 		
 	render() {
 		if(!this.props.loggedIn) {
@@ -40,24 +48,30 @@ import Button from "../components/Button";
 		// otherwise show user profile
 		return(
 			<div>
-				<p>Logged in</p>
-				<p>Username: {this.props.username}</p>
-				<p>Bio: {this.props.bio}</p>
+				<p>Logged in as {this.props.username}</p>
 
 				{
 					// list the administered poll
-					this.props.adminPolls.map(function(poll) {
+					this.props.adminPolls.map((poll) => {
 						return(
-							<p><Link to={"/poll?pollID=" + poll._id}>
-								{poll.question}
-							</Link></p>
+							<div className="jumbotron poll-list">
+								<Link to={"/poll?pollID=" + poll._id}>
+									{poll.question}
+								</Link>
+								<Button 
+									className="delete-poll btn btn-danger"
+									click={this.delete.bind(this)}
+									value={poll._id}
+									label="Delete"/>
+							</div>
 						);
 					})
 				}
 
-				<label for="question">Question:</label>
+				<label for="question">Question:&nbsp;</label>
 				<input id="question" type="input"/>
 				<Button 
+					className="btn btn-success"
 					click={this.initPoll.bind(this)} 
 					label="Ask the masse" />
 			</div>

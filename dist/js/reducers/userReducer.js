@@ -111,7 +111,25 @@ function reducer() {
 			return _extends({}, state, {
 				fetching: "failed"
 			});
-	}
 
+		case "DELETE_POLL_PENDING":
+			return _extends({}, state, {
+				fetching: "fetching"
+			});
+
+		case "DELETE_POLL_FULFILLED":
+			return _extends({}, state, {
+				userData: _extends({}, state.userData, {
+					adminPolls: action.payload.data.adminPolls
+				}),
+				fetching: "success"
+			});
+
+		case "DELETE_POLL_REJECTED":
+			return _extends({}, state, {
+				fetching: "failed",
+				error: true
+			});
+	}
 	return state;
 }

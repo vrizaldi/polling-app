@@ -9,6 +9,7 @@ import loadPoll from "./server/loadPoll";
 import handleVote from "./server/handleVote";
 import createPoll from "./server/createPoll";
 import createOpt from "./server/createOpt";
+import deletePoll from "./server/deletePoll";
 import Client from "./server/Client";
 
 var server = express();
@@ -43,13 +44,14 @@ function serveIndex(req, res) {
 			<title></title>
 			<meta name="author" content="vrizaldi">
 
-			<link href="/index.min.css" rel="stylesheet">
 		<!--	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
 			rel="stylesheet" >-->
+			<link href="/bootstrap.min.css" rel="stylesheet">
+			<link href="/freelancer.min.css" rel="stylesheet">
+			<link href="/index.min.css" rel="stylesheet">
 		</head>
 
 		<body>
-			<h1>Test</h1>
 			<div id="app">${html}</div>
 			<script src="/client.min.js"></script>
 			<p id="credit">Verdy Noorghifari 2017 © All right reversed.</p>
@@ -72,6 +74,7 @@ server.post("/login", jsonencoded, handleLogin);
 server.post("/register", jsonencoded, handleSignup); 
 server.post("/vote", jsonencoded, handleVote);
 server.post("/newpoll", jsonencoded, createPoll);
+server.post("/delpoll", jsonencoded, deletePoll);
 server.post("/newopt", jsonencoded, createOpt);
 
 var port = process.env.PORT ? process.env.PORT : 21701;

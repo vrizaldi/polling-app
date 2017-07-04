@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import queryString from "query-string";
+import { PieChart } from "react-d3/piechart";
 
 import { load, vote, createOpt } from "../actions/PollActions";
 import Button from "../components/Button";
@@ -41,6 +42,27 @@ import Button from "../components/Button";
 		console.log("new opt:", opt);
 	}
 
+	toData(opt) {
+		var sum = this.sumUp(opt);
+		var data = [];
+		for(var i = 0; i < opt.length; i++) {
+			data.push({
+				label: opt[i].answer,
+				value: ((opt[i].count / sum) * 100).toFixed(0)
+			});
+		}
+		console.log(data);
+		return data;
+	} 
+
+	sumUp(opt) {
+		var sum = 0;
+		for(var i = 0; i < opt.length; i++) {
+			sum += opt[i].count;
+		}
+		return sum;
+	}
+
 	render() {
 		if(this.props.fetching == "none") {
 			return(<button onClick={this.load.bind(this)}>Click if graph doesn't load</button>);
@@ -48,28 +70,35 @@ import Button from "../components/Button";
 		if(this.props.fetching == "fetching") {
 			return(<p>Fetching polls...</p>);
 		} 
+
 		return(
 			<div>
 				<h1>{this.props.question}</h1>
-				<div id="graph">{
-					// list current the count
-					this.props.opt.map(function(opt) {
-						return opt.count;
-					})
-				}</div>
+				<div id="graph">
+					<PieChart
+						data={this.toData(this.props.opt)}
+						width={900}
+						height={600}
+						radius={200}
+						innerRadius={50} />
+				</div>
 
+				<h3>Vote!</h3>
 				{
 					this.props.opt.map(
 						(opt, optID) => {
 							// list the option as buttons
 							return(<Button 
+								className="btn btn-outline-success"
 								click={this.vote.bind(this)} 
 								value={optID}
 								label={opt.answer} />);
 						})
 				}
-				<input id="new-opt"/>
-				<Button click={this.newOpt.bind(this)} label="+"/>
+				<div id="opt-adder">
+					<input id="new-opt"/>
+					<Button className="btn btn-success" click={this.newOpt.bind(this)} label="+"/>
+				</div>
 			</div>
 		);
 	}

@@ -119,17 +119,24 @@ export default function reducer(state=initialStates, action) {
 		return {
 			...state,
 			fetching: "fetching"
-		}
+		};
 
-	case "DELETE_POLL_PENDING": 
-		var adminPolls = 0;
+	case "DELETE_POLL_FULFILLED": 
 		return {
 			...state,
 			userData: {
 				...state.userData,
+				adminPolls: action.payload.data.adminPolls
+			},
+			fetching: "success"
+		};
 
-			}
-		}
+	case "DELETE_POLL_REJECTED":
+		return {
+			...state,
+			fetching: "failed",
+			error: true
+		};
 	}
 	return state;
 }

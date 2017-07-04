@@ -62,8 +62,16 @@ var Profile = (_dec = (0, _reactRedux.connect)(function (store) {
 			this.props.dispatch((0, _UserActions.createPoll)(this.props.username, this.props.password, question));
 		}
 	}, {
+		key: "delete",
+		value: function _delete(pollID) {
+			console.log("Deleting " + pollID + "...");
+			this.props.dispatch((0, _UserActions.deletePoll)(this.props.username, this.props.password, pollID));
+		}
+	}, {
 		key: "render",
 		value: function render() {
+			var _this2 = this;
+
 			if (!this.props.loggedIn) {
 				// if isn't logged in redirect to login screen
 				return _react2.default.createElement(_reactRouterDom.Redirect, { to: "/" });
@@ -82,40 +90,35 @@ var Profile = (_dec = (0, _reactRedux.connect)(function (store) {
 				_react2.default.createElement(
 					"p",
 					null,
-					"Logged in"
-				),
-				_react2.default.createElement(
-					"p",
-					null,
-					"Username: ",
+					"Logged in as ",
 					this.props.username
-				),
-				_react2.default.createElement(
-					"p",
-					null,
-					"Bio: ",
-					this.props.bio
 				),
 
 				// list the administered poll
 				this.props.adminPolls.map(function (poll) {
 					return _react2.default.createElement(
-						"p",
-						null,
+						"div",
+						{ className: "jumbotron poll-list" },
 						_react2.default.createElement(
 							_reactRouterDom.Link,
 							{ to: "/poll?pollID=" + poll._id },
 							poll.question
-						)
+						),
+						_react2.default.createElement(_Button2.default, {
+							className: "delete-poll btn btn-danger",
+							click: _this2.delete.bind(_this2),
+							value: poll._id,
+							label: "Delete" })
 					);
 				}),
 				_react2.default.createElement(
 					"label",
 					{ htmlFor: "question" },
-					"Question:"
+					"Question:\xA0"
 				),
 				_react2.default.createElement("input", { id: "question", type: "input" }),
 				_react2.default.createElement(_Button2.default, {
+					className: "btn btn-success",
 					click: this.initPoll.bind(this),
 					label: "Ask the masse" })
 			);

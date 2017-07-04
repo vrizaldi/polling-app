@@ -40,6 +40,10 @@ var _createOpt = require("./server/createOpt");
 
 var _createOpt2 = _interopRequireDefault(_createOpt);
 
+var _deletePoll = require("./server/deletePoll");
+
+var _deletePoll2 = _interopRequireDefault(_deletePoll);
+
 var _Client = require("./server/Client");
 
 var _Client2 = _interopRequireDefault(_Client);
@@ -68,7 +72,7 @@ function serveIndex(req, res) {
 	res.writeHead(200, {
 		"content-type": "text/html"
 	});
-	res.write("\n\t\t<!doctype html>\n\t\t<html>\n\t\t<head>\n\t\t\t<meta charset=\"utf-8\">\n\n\t\t\t<title></title>\n\t\t\t<meta name=\"author\" content=\"vrizaldi\">\n\n\t\t\t<link href=\"/index.min.css\" rel=\"stylesheet\">\n\t\t<!--\t<link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" \n\t\t\trel=\"stylesheet\" >-->\n\t\t</head>\n\n\t\t<body>\n\t\t\t<h1>Test</h1>\n\t\t\t<div id=\"app\">" + html + "</div>\n\t\t\t<script src=\"/client.min.js\"></script>\n\t\t\t<p id=\"credit\">Verdy Noorghifari 2017 \xA9 All right reversed.</p>\n\t\t</body>\n\t\t</html>\n\t");
+	res.write("\n\t\t<!doctype html>\n\t\t<html>\n\t\t<head>\n\t\t\t<meta charset=\"utf-8\">\n\n\t\t\t<title></title>\n\t\t\t<meta name=\"author\" content=\"vrizaldi\">\n\n\t\t<!--\t<link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" \n\t\t\trel=\"stylesheet\" >-->\n\t\t\t<link href=\"/bootstrap.min.css\" rel=\"stylesheet\">\n\t\t\t<link href=\"/freelancer.min.css\" rel=\"stylesheet\">\n\t\t\t<link href=\"/index.min.css\" rel=\"stylesheet\">\n\t\t</head>\n\n\t\t<body>\n\t\t\t<div id=\"app\">" + html + "</div>\n\t\t\t<script src=\"/client.min.js\"></script>\n\t\t\t<p id=\"credit\">Verdy Noorghifari 2017 \xA9 All right reversed.</p>\n\t\t</body>\n\t\t</html>\n\t");
 	res.end();
 	console.log("file sent:", html);
 
@@ -84,6 +88,7 @@ server.post("/login", jsonencoded, _handleLogin2.default);
 server.post("/register", jsonencoded, _handleSignup2.default);
 server.post("/vote", jsonencoded, _handleVote2.default);
 server.post("/newpoll", jsonencoded, _createPoll2.default);
+server.post("/delpoll", jsonencoded, _deletePoll2.default);
 server.post("/newopt", jsonencoded, _createOpt2.default);
 
 var port = process.env.PORT ? process.env.PORT : 21701;

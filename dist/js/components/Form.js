@@ -37,18 +37,20 @@ var Form = function (_React$Component) {
 				_react2.default.createElement(
 					"label",
 					{ htmlFor: "username" },
-					"Username: "
+					"Username:\xA0"
 				),
 				_react2.default.createElement("input", { id: "username", type: "input" }),
+				_react2.default.createElement("br", null),
 				_react2.default.createElement(
 					"label",
 					{ htmlFor: "password" },
-					"Password: "
+					"Password:\xA0"
 				),
 				_react2.default.createElement("input", { id: "password", type: "password" }),
+				_react2.default.createElement("br", null),
 				_react2.default.createElement(
 					"button",
-					{ onClick: this.props.action },
+					{ className: "btn btn-primary", onClick: this.props.action },
 					this.props.label
 				)
 			);

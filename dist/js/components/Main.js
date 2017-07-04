@@ -57,11 +57,6 @@ var Main = function (_React$Component) {
 				"main",
 				null,
 				_react2.default.createElement(
-					"h1",
-					null,
-					"JS works!"
-				),
-				_react2.default.createElement(
 					_reactRouterDom.Switch,
 					null,
 					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _Home2.default }),

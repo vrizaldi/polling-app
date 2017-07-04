@@ -19,6 +19,8 @@ var _queryString = require("query-string");
 
 var _queryString2 = _interopRequireDefault(_queryString);
 
+var _piechart = require("react-d3/piechart");
+
 var _PollActions = require("../actions/PollActions");
 
 var _Button = require("../components/Button");
@@ -78,6 +80,29 @@ var Poll = (_dec = (0, _reactRedux.connect)(function (store) {
 			console.log("new opt:", opt);
 		}
 	}, {
+		key: "toData",
+		value: function toData(opt) {
+			var sum = this.sumUp(opt);
+			var data = [];
+			for (var i = 0; i < opt.length; i++) {
+				data.push({
+					label: opt[i].answer,
+					value: (opt[i].count / sum * 100).toFixed(0)
+				});
+			}
+			console.log(data);
+			return data;
+		}
+	}, {
+		key: "sumUp",
+		value: function sumUp(opt) {
+			var sum = 0;
+			for (var i = 0; i < opt.length; i++) {
+				sum += opt[i].count;
+			}
+			return sum;
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var _this2 = this;
@@ -96,6 +121,7 @@ var Poll = (_dec = (0, _reactRedux.connect)(function (store) {
 					"Fetching polls..."
 				);
 			}
+
 			return _react2.default.createElement(
 				"div",
 				null,
@@ -107,21 +133,32 @@ var Poll = (_dec = (0, _reactRedux.connect)(function (store) {
 				_react2.default.createElement(
 					"div",
 					{ id: "graph" },
-
-					// list current the count
-					this.props.opt.map(function (opt) {
-						return opt.count;
-					})
+					_react2.default.createElement(_piechart.PieChart, {
+						data: this.toData(this.props.opt),
+						width: 900,
+						height: 600,
+						radius: 200,
+						innerRadius: 50 })
+				),
+				_react2.default.createElement(
+					"h3",
+					null,
+					"Vote!"
 				),
 				this.props.opt.map(function (opt, optID) {
 					// list the option as buttons
 					return _react2.default.createElement(_Button2.default, {
+						className: "btn btn-outline-success",
 						click: _this2.vote.bind(_this2),
 						value: optID,
 						label: opt.answer });
 				}),
-				_react2.default.createElement("input", { id: "new-opt" }),
-				_react2.default.createElement(_Button2.default, { click: this.newOpt.bind(this), label: "+" })
+				_react2.default.createElement(
+					"div",
+					{ id: "opt-adder" },
+					_react2.default.createElement("input", { id: "new-opt" }),
+					_react2.default.createElement(_Button2.default, { className: "btn btn-success", click: this.newOpt.bind(this), label: "+" })
+				)
 			);
 		}
 	}]);

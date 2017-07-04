@@ -58,3 +58,21 @@ export function createPoll(username, password, question) {
 		})
 	};
 }
+
+export function deletePoll(username, password, pollID) {
+	return {
+		type: "DELETE_POLL",
+		payload: axios({
+			method: "post",
+			url: "/delpoll",
+			data: {
+				username,
+				password,
+				_id: pollID
+			},
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+	};
+} 

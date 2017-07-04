@@ -7,6 +7,7 @@ exports.reset = reset;
 exports.login = login;
 exports.register = register;
 exports.createPoll = createPoll;
+exports.deletePoll = deletePoll;
 
 var _axios = require("axios");
 
@@ -65,6 +66,24 @@ function createPoll(username, password, question) {
 				username: username,
 				password: password,
 				question: question
+			},
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+	};
+}
+
+function deletePoll(username, password, pollID) {
+	return {
+		type: "DELETE_POLL",
+		payload: (0, _axios2.default)({
+			method: "post",
+			url: "/delpoll",
+			data: {
+				username: username,
+				password: password,
+				_id: pollID
 			},
 			headers: {
 				"Content-Type": "application/json"
