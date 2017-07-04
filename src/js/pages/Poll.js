@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import queryString from "query-string";
 
-import { load, vote } from "../actions/PollActions";
+import { load, vote, createOpt } from "../actions/PollActions";
 import Button from "../components/Button";
 
 @connect((store) => {
@@ -35,6 +35,12 @@ import Button from "../components/Button";
 		this.props.dispatch(load(pollID));
 	}
 
+	newOpt() {
+		var opt = document.getElementById("new-opt").value;
+		this.props.dispatch(createOpt(this.props._id, opt));
+		console.log("new opt:", opt);
+	}
+
 	render() {
 		if(this.props.fetching == "none") {
 			return(<button onClick={this.load.bind(this)}>Click if graph doesn't load</button>);
@@ -62,6 +68,8 @@ import Button from "../components/Button";
 								label={opt.answer} />);
 						})
 				}
+				<input id="new-opt"/>
+				<Button click={this.newOpt.bind(this)} label="+"/>
 			</div>
 		);
 	}

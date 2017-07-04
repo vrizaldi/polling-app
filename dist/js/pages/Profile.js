@@ -17,6 +17,12 @@ var _reactRedux = require("react-redux");
 
 var _reactRouterDom = require("react-router-dom");
 
+var _UserActions = require("../actions/UserActions");
+
+var _Button = require("../components/Button");
+
+var _Button2 = _interopRequireDefault(_Button);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27,8 +33,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Profile = (_dec = (0, _reactRedux.connect)(function (store) {
 	return {
+		fetching: store.user.fetching,
 		loggedIn: store.user.loggedIn,
 		username: store.user.userData.username,
+		password: store.user.userData.password,
+		adminPolls: store.user.userData.adminPolls,
 		bio: store.user.userData.bio
 	};
 }), _dec(_class = function (_React$Component) {
@@ -41,11 +50,29 @@ var Profile = (_dec = (0, _reactRedux.connect)(function (store) {
 	}
 
 	_createClass(Profile, [{
+		key: "componentWillMount",
+		value: function componentWillMount() {
+			this.props.dispatch((0, _UserActions.reset)());
+		}
+	}, {
+		key: "initPoll",
+		value: function initPoll() {
+			var question = document.getElementById("question").value;
+			console.log("question:", question);
+			this.props.dispatch((0, _UserActions.createPoll)(this.props.username, this.props.password, question));
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			if (!this.props.loggedIn) {
 				// if isn't logged in redirect to login screen
 				return _react2.default.createElement(_reactRouterDom.Redirect, { to: "/" });
+			} else if (this.props.fetching == "fetching") {
+				return _react2.default.createElement(
+					"p",
+					null,
+					"Fetching user data..."
+				);
 			}
 
 			// otherwise show user profile
@@ -68,7 +95,29 @@ var Profile = (_dec = (0, _reactRedux.connect)(function (store) {
 					null,
 					"Bio: ",
 					this.props.bio
-				)
+				),
+
+				// list the administered poll
+				this.props.adminPolls.map(function (poll) {
+					return _react2.default.createElement(
+						"p",
+						null,
+						_react2.default.createElement(
+							_reactRouterDom.Link,
+							{ to: "/poll?pollID=" + poll._id },
+							poll.question
+						)
+					);
+				}),
+				_react2.default.createElement(
+					"label",
+					{ htmlFor: "question" },
+					"Question:"
+				),
+				_react2.default.createElement("input", { id: "question", type: "input" }),
+				_react2.default.createElement(_Button2.default, {
+					click: this.initPoll.bind(this),
+					label: "Ask the masse" })
 			);
 		}
 	}]);

@@ -71,6 +71,13 @@ var Poll = (_dec = (0, _reactRedux.connect)(function (store) {
 			this.props.dispatch((0, _PollActions.load)(pollID));
 		}
 	}, {
+		key: "newOpt",
+		value: function newOpt() {
+			var opt = document.getElementById("new-opt").value;
+			this.props.dispatch((0, _PollActions.createOpt)(this.props._id, opt));
+			console.log("new opt:", opt);
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var _this2 = this;
@@ -112,7 +119,9 @@ var Poll = (_dec = (0, _reactRedux.connect)(function (store) {
 						click: _this2.vote.bind(_this2),
 						value: optID,
 						label: opt.answer });
-				})
+				}),
+				_react2.default.createElement("input", { id: "new-opt" }),
+				_react2.default.createElement(_Button2.default, { click: this.newOpt.bind(this), label: "+" })
 			);
 		}
 	}]);

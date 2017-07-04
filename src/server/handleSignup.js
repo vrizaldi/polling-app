@@ -18,7 +18,9 @@ export default function handleSignup(req, res) {
 					// save to database
 					db.collection("users").save({
 						username: req.body.username,
-						password: req.body.password
+						password: req.body.password,
+						adminPolls: [],
+						participatePolls: []
 					});
 
 					res.json({

@@ -59,6 +59,26 @@ function reducer() {
 					question: action.payload.data.question
 				}
 			});
+
+		case "ADD_OPT_PENDING":
+			return _extends({}, state, {
+				fetching: "fetching"
+			});
+
+		case "ADD_OPT_FULFILLED":
+			var opt = action.payload.data.opt;
+			return _extends({}, state, {
+				pollData: _extends({}, state.pollData, {
+					opt: opt
+				}),
+				"fetching": "success"
+			});
+
+		case "ADD_OPT_REJECTED":
+			return _extends({}, state, {
+				fetching: "failed",
+				error: true
+			});
 	}
 	return state;
 }

@@ -15,7 +15,10 @@ export default function handleLogin(req, res) {
 				console.log("success");
 				res.json({
 					username: req.body.username,
-					bio: "It's the " + req.body.username
+					password: req.body.password,
+					bio: "It's the " + req.body.username,
+					adminPolls: docs[0].adminPolls ? 
+						docs[0].adminPolls : []
 				});
 			} else {
 				// username and password didn't match

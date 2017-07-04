@@ -4,6 +4,7 @@ const initialStates = {
 	error: false,
 	userData: {
 		username: "",
+		password: "",
 		bio: "",
 		adminPolls: [],
 		participatePolls: []
@@ -33,8 +34,9 @@ export default function reducer(state=initialStates, action) {
 				...state,
 				userData: {
 					username: action.payload.data.username,
+					password: action.payload.data.password,
 					bio: action.payload.data.bio,
-					adminPolls: [],
+					adminPolls: action.payload.data.adminPolls,
 					participatePolls: []
 				},
 				loggedIn: true,
@@ -83,28 +85,51 @@ export default function reducer(state=initialStates, action) {
 			...state,
 			error: true
 		};
-/*
-	// voting cases ----------------
-	case "VOTE_PENDING":
+
+	case "CREATE_POLL_PENDING":
 		return {
 			...state,
 			fetching: "fetching"
 		};
 
-	case "VOTE_FULFILLED":
-		var participatePolls = state.participatePolls.splice(0);
-		participatePolls.push({
-			pollID: action.payload.data.pollID,
-			selectedOpt: action.payload.data.selectedOpt
+	case "CREATE_POLL_FULFILLED":
+		var adminPolls = state.userData.adminPolls.splice(0);
+			// clone it
+		adminPolls.push({
+			_id: action.payload.data._id,
+			question: action.payload.data.question
 		});
-
+		console.log("success adding poll");
 		return {
 			...state,
-			participatePolls,
+			userData: {
+				...state.userData,
+				adminPolls,	
+			},
 			fetching: "success"
 		};
-*/
-	}
 
+	case "CREATE_POLL_REJECTED":
+		return {
+			...state,
+			fetching: "failed"
+		};
+
+	case "DELETE_POLL_PENDING":
+		return {
+			...state,
+			fetching: "fetching"
+		}
+
+	case "DELETE_POLL_PENDING": 
+		var adminPolls = 0;
+		return {
+			...state,
+			userData: {
+				...state.userData,
+
+			}
+		}
+	}
 	return state;
 }

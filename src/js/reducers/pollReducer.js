@@ -52,6 +52,30 @@ export default function reducer(state=initialStates, action) {
 				question: action.payload.data.question
 			}
 		};
+
+	case "ADD_OPT_PENDING":
+		return {
+			...state,
+			fetching: "fetching"
+		};
+
+	case "ADD_OPT_FULFILLED":
+		var opt = action.payload.data.opt;
+		return {
+			...state,
+			pollData: {
+				...state.pollData,
+				opt
+			},
+			"fetching": "success"
+		};
+
+	case "ADD_OPT_REJECTED":
+		return {
+			...state,
+			fetching: "failed",
+			error: true
+		};
 	}
 	return state;
 }

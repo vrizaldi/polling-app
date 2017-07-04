@@ -13,6 +13,7 @@ var initialStates = {
 	error: false,
 	userData: {
 		username: "",
+		password: "",
 		bio: "",
 		adminPolls: [],
 		participatePolls: []
@@ -42,7 +43,10 @@ function reducer() {
 				return _extends({}, state, {
 					userData: {
 						username: action.payload.data.username,
-						bio: action.payload.data.bio
+						password: action.payload.data.password,
+						bio: action.payload.data.bio,
+						adminPolls: action.payload.data.adminPolls,
+						participatePolls: []
 					},
 					loggedIn: true,
 					fetching: "none"
@@ -82,27 +86,31 @@ function reducer() {
 			return _extends({}, state, {
 				error: true
 			});
-		/*
-  	// voting cases ----------------
-  	case "VOTE_PENDING":
-  		return {
-  			...state,
-  			fetching: "fetching"
-  		};
-  
-  	case "VOTE_FULFILLED":
-  		var participatePolls = state.participatePolls.splice(0);
-  		participatePolls.push({
-  			pollID: action.payload.data.pollID,
-  			selectedOpt: action.payload.data.selectedOpt
-  		});
-  
-  		return {
-  			...state,
-  			participatePolls,
-  			fetching: "success"
-  		};
-  		*/
+
+		case "CREATE_POLL_PENDING":
+			return _extends({}, state, {
+				fetching: "fetching"
+			});
+
+		case "CREATE_POLL_FULFILLED":
+			var adminPolls = state.userData.adminPolls.splice(0);
+			// clone it
+			adminPolls.push({
+				_id: action.payload.data._id,
+				question: action.payload.data.question
+			});
+			console.log("success adding poll");
+			return _extends({}, state, {
+				userData: _extends({}, state.userData, {
+					adminPolls: adminPolls
+				}),
+				fetching: "success"
+			});
+
+		case "CREATE_POLL_REJECTED":
+			return _extends({}, state, {
+				fetching: "failed"
+			});
 	}
 
 	return state;

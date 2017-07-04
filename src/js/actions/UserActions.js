@@ -40,3 +40,21 @@ export function register(username, password) {
 		})
 	};
 }
+
+export function createPoll(username, password, question) {
+	return {
+		type: "CREATE_POLL",
+		payload: axios({
+			method: "post",
+			url: "/newpoll",
+			data: {
+				username,
+				password,
+				question
+			},
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+	};
+}

@@ -29,3 +29,20 @@ export function vote(pollID, optID) {
 		})
 	};
 }
+
+export function createOpt(pollID, opt) {
+	return {
+		type: "ADD_OPT",
+		payload: axios({
+			method: "post",
+			url: "/newopt",
+			data: {
+				_id: pollID,
+				opt
+			},
+			headers: {
+				"content-type": "application/json"
+			}
+		}) 
+	};
+}

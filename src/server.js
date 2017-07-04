@@ -7,6 +7,8 @@ import handleLogin from "./server/handleLogin";
 import handleSignup from "./server/handleSignup";
 import loadPoll from "./server/loadPoll";
 import handleVote from "./server/handleVote";
+import createPoll from "./server/createPoll";
+import createOpt from "./server/createOpt";
 import Client from "./server/Client";
 
 var server = express();
@@ -69,6 +71,8 @@ function serveIndex(req, res) {
 server.post("/login", jsonencoded, handleLogin); 
 server.post("/register", jsonencoded, handleSignup); 
 server.post("/vote", jsonencoded, handleVote);
+server.post("/newpoll", jsonencoded, createPoll);
+server.post("/newopt", jsonencoded, createOpt);
 
 var port = process.env.PORT ? process.env.PORT : 21701;
 server.listen(port, function (err) {

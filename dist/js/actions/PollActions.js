@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.load = load;
 exports.reset = reset;
 exports.vote = vote;
+exports.createOpt = createOpt;
 
 var _axios = require("axios");
 
@@ -35,6 +36,23 @@ function vote(pollID, optID) {
 			data: {
 				_id: pollID,
 				optID: optID
+			},
+			headers: {
+				"content-type": "application/json"
+			}
+		})
+	};
+}
+
+function createOpt(pollID, opt) {
+	return {
+		type: "ADD_OPT",
+		payload: (0, _axios2.default)({
+			method: "post",
+			url: "/newopt",
+			data: {
+				_id: pollID,
+				opt: opt
 			},
 			headers: {
 				"content-type": "application/json"

@@ -32,6 +32,14 @@ var _handleVote = require("./server/handleVote");
 
 var _handleVote2 = _interopRequireDefault(_handleVote);
 
+var _createPoll = require("./server/createPoll");
+
+var _createPoll2 = _interopRequireDefault(_createPoll);
+
+var _createOpt = require("./server/createOpt");
+
+var _createOpt2 = _interopRequireDefault(_createOpt);
+
 var _Client = require("./server/Client");
 
 var _Client2 = _interopRequireDefault(_Client);
@@ -75,6 +83,8 @@ function serveIndex(req, res) {
 server.post("/login", jsonencoded, _handleLogin2.default);
 server.post("/register", jsonencoded, _handleSignup2.default);
 server.post("/vote", jsonencoded, _handleVote2.default);
+server.post("/newpoll", jsonencoded, _createPoll2.default);
+server.post("/newopt", jsonencoded, _createOpt2.default);
 
 var port = process.env.PORT ? process.env.PORT : 21701;
 server.listen(port, function (err) {
