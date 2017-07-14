@@ -72,7 +72,7 @@ function serveIndex(req, res) {
 	res.writeHead(200, {
 		"content-type": "text/html"
 	});
-	res.write("\n\t\t<!doctype html>\n\t\t<html>\n\t\t<head>\n\t\t\t<meta charset=\"utf-8\">\n\n\t\t\t<title></title>\n\t\t\t<meta name=\"author\" content=\"vrizaldi\">\n\n\t\t<!--\t<link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" \n\t\t\trel=\"stylesheet\" >-->\n\t\t\t<link href=\"/bootstrap.min.css\" rel=\"stylesheet\">\n\t\t\t<link href=\"/freelancer.min.css\" rel=\"stylesheet\">\n\t\t\t<link href=\"/index.min.css\" rel=\"stylesheet\">\n\t\t</head>\n\n\t\t<body>\n\t\t\t<div id=\"app\">" + html + "</div>\n\t\t\t<script src=\"/client.min.js\"></script>\n\t\t\t<p id=\"credit\">Verdy Noorghifari 2017 \xA9 All right reversed.</p>\n\t\t</body>\n\t\t</html>\n\t");
+	res.write("\n\t\t<!doctype html>\n\t\t<html>\n\t\t<head>\n\t\t\t<meta charset=\"utf-8\">\n\n\t\t\t<title>Polling App</title>\n\t\t\t<link id=\"favicon\" rel=\"icon\" href=\"/favicon.png\">\n\t\t\t<meta name=\"author\" content=\"vrizaldi\">\n\n\t\t<!--\t<link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" \n\t\t\trel=\"stylesheet\" >-->\n\t\t\t<link href=\"/bootstrap.min.css\" rel=\"stylesheet\">\n\t\t\t<link href=\"/freelancer.min.css\" rel=\"stylesheet\">\n\t\t\t<link href=\"/index.min.css\" rel=\"stylesheet\">\n\t\t</head>\n\n\t\t<body>\n\t\t\t<div id=\"app\">" + html + "</div>\n\t\t\t<script src=\"/client.min.js\"></script>\n\t\t\t<p id=\"credit\">Verdy Noorghifari 2017 \xA9 All right reversed.</p>\n\t\t</body>\n\t\t</html>\n\t");
 	res.end();
 	console.log("file sent:", html);
 
