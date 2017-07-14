@@ -41,7 +41,8 @@ function serveIndex(req, res) {
 		<head>
 			<meta charset="utf-8">
 
-			<title></title>
+			<title>Polling App</title>
+			<link id="favicon" rel="icon" href="/favicon.png">
 			<meta name="author" content="vrizaldi">
 
 		<!--	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
