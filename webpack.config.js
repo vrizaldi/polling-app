@@ -3,27 +3,19 @@ var webpack = require("webpack");
 
 module.exports = {
 	context: __dirname + "/dist",
-	devtool: debug ? "inline-sourcemap" : null,
 	entry: "./js/client.js",
-	/*
-	module: {
-		loaders: [
-			{
-				test: /\.js?$/,
-				exclude: /(node_modules|bower_components)/,
-				loader: "babel-loader",
-				query: {
-					presets: ["react", "es2015", "stage-0"],
-					plugins: ["react-html-attrs", 
-							"transform-class-properties",
-							"transform-decorators-legacy"]
-				}
-			}
-		]
-	},
-	*/
 	output: {
 		path: __dirname + "/dist/public",
 		filename: "client.min.js"
-	}
+	},
+	devtool: "source-map",
+	plugins: debug ? [] : [
+		new webpack.optimize.UglifyJsPlugin({
+			comments: false,
+			compress: {
+				warnings: false,
+				drop_console: true
+			}
+		})
+	]
 };
